@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+div
+{
+    max-width: 33em;
+}
+p
+{
+    margin-left: 8em;
+}
+pre
+{
+    margin-left: 8em;
+}
+table
+{
+    margin-left: 8em;
+}
+td.first
+{
+    vertical-align: text-top;
+}
+td.rest
+{
+    padding-left: 1em;
+    vertical-align: text-top;
+}
+th.first
+{
+    text-align: left;
+}
+th.rest
+{
+    padding-left: 1em;
+    text-align: left;
+}
+</style>
+</head>
+<body>
+<div>
+<h1>
+                Vector Direction
+</h1>
+<h2>
+                Description
+</h2>
+<p>
+                Compute the Cartesian directions associated
+                with the components (or scalar projections) of
+                vectors.
+</p>
+<h2>
+                Usage
+</h2>
+<p>
+                <code>direction.xy ( xy )</code>
+</p>
+<table>
+<tr>
+<th class="first">
+                Argument
+</th>
+<th class="rest">
+                Description
+</th>
+</tr>
+<tr>
+<td class="first">
+                <code>xy</code>
+</td>
+<td class="rest">
+                A <code>data.frame</code> with at least two
+                columns. The first two columns should be
+                <code>numeric</code>.
+</td>
+</tr>
+</table>
+<h2>
+
+</h2>
+<h2>
+                Value
+</h2>
+<p>
+                A <code>vector</code>, one element per row of
+                the argument. Each element specifies the
+                direction&mdash;in radians&mdash;associated with
+                the corresponding row of the argument.
+</p>
+<h2>
+                <a
+id = "Examples"
+				>Examples</a>
+</h2>
+<pre>
+#EXAMPLE 1
+
+ppkg <- "file-path-to-the-protopackage--WITHOUT-final-path-separator"
+error <- tryCatch (
+    expr =
+        {
+            direction.xy <- source ( paste0 (
+            ppkg , "/inst/extdata/R/0/direction.xy/1.R") ) [[ 1 ]]
+            FALSE
+        } ,
+    error = function ( e ) TRUE )
+if ( error ) {
+    message (
+        "Did you forget to define ppkg, the path to this protopackage?" )
+} else {
+    xy <- data.frame (
+        x = c( +1 , +1 ,  0 , -1 , -1 , -1 ,  0 , +1 ) ,
+        y = c(  0 , +1 , +1 , +1 ,  0 , -1 , -1 , -1 ) )
+    cat ( "\n\n\n" )
+    print ( xy )
+    plot ( xy , col = NA )
+    text ( xy , labels = seq_len ( nrow ( xy ) ) , font = 2, col = "red" )
+    d <- direction.xy ( xy )
+    xydd <- cbind ( xy , rad = d , deg = d * 180 / pi )
+    xydd <- cbind ( xydd , deg360 = xydd $ deg %% 360 )
+    cat ( "\n\n\n" )
+    print ( xydd )
+    plot ( xy , col = NA )
+    h <- 0.9
+    s <- 1 / sqrt ( 2 )
+    segments ( x0= 0 , y0 = -h , y1 = h )
+    segments ( y0= 0 , x0 = -h , x1 = h )
+    segments ( y0= -h , x0 = -h , x1 = +h , y1 = +h )
+    segments ( y0= +h , x0 = -h , x1 = +h , y1 = -h )
+    text ( xy , labels = xydd $ deg360 , font = 2, col = "red" )
+}
+
+
+#EXAMPLE 2 (simpler, no errror checking)
+ppkg <- "~"
+direction.xy <- source ( paste0 ( ppkg ,
+    "/inst/extdata/R/0/direction.xy/1.R") ) [[ 1 ]]
+DF1 <- as.data.frame ( matrix ( ncol = 2 , data = runif ( 16 ) ) )
+cbind ( DF1 , d = direction.xy ( DF1 ) )
+</pre>
+<h2>
+                See Also
+</h2>
+<p>
+                Wikimedia Foundation (2022-05-04) Euclidean
+                        vector&mdash;Representations. <a
+href = "https://en.wikipedia.org/wiki/Euclidean_vector#Representations"
+                        >https://<wbr>en.wikipedia.org/<span/
+                        ><wbr>wiki/<wbr>Euclidean_<wbr><span/
+                        >vector#<wbr>Representations</a>
+</p>
+<h2>
+				Identification
+</h2>
+<p>
+				This document is assigned the name
+				<code>URN:UUID:efb191a3-<wbr>90cb-<wbr><span/
+				>4ea2-<wbr>8784-<wbr>784802ae3b19#<wbr><span/
+				>inst/<wbr>extdata/<wbr>html/0/<wbr><span/
+				>direction.xy/<wbr>1.htm</code>
+<!-- URN:UUID:efb191a3-90cb-4ea2-8784-784802ae3b19#inst/extdata/html/0/direction.xy/1.htm
+-->
+</p>
+</div>
+</body>
+</html>

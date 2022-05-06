@@ -1,0 +1,14 @@
+Package: pkg_efb191a3-90cb-4ea2-8784-784802ae3b19
+Type: Package
+Title: Vector Direction
+Version: 0.0-0
+Date: 2022-05-06
+Author: D. Michael Parrish [aut]
+Maintainer: Neat O <neatoverse@yahoo.com>
+Description: Compute Cartesian directions.
+        Compute the Cartesian directions associated with
+    the components (or scalar projections) of vectors.
+        This file is
+    URN:UUID:efb191a3-90cb-4ea2-8784-784802ae3b19#DESCRIPTION
+License: AGPL-3
+Encoding: UTF-8
